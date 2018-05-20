@@ -1,0 +1,75 @@
+<title>DATA MINER </title>
+<div dir="ltr" style="text-align: left;" trbidi="on">
+<br />
+<span id="goog_505349517"></span><span id="goog_505349518"></span><br />
+<br />
+<br />
+<span id="goog_505349517"></span><span id="goog_505349518"></span><br />
+<div class="separator" style="clear: both; text-align: center;">
+<a href="dataminer.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="55" src="dataminer.png" width="400" /></a></div>
+<span id="goog_505349517"></span><span id="goog_505349518"></span><br />
+<span id="goog_505349517"></span><span id="goog_505349518"></span><br />
+<b><span id="goog_505349517"><br /></span></b>
+<br />
+<br />
+<b><span id="goog_505349517">1 : </span></b><span id="goog_505349517">installl r java package in r studio then rhdfs package</span><br />
+<br />
+<span id="goog_505349517">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; library("rJava", lib.loc="~/R/x86_64-pc-linux-gnu-library/3.2")</span><span id="goog_505349517"> </span><br />
+<span id="goog_505349517"><br /></span>
+<b><span id="goog_505349517">2 : </span></b><span id="goog_505349517">before installing it set hadoop path to studio and start the hadoop by typing&nbsp;</span><br />
+<br />
+<span id="goog_505349517">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; start-all.sh</span><br />
+<span id="goog_505349517">&nbsp; &nbsp; &nbsp; &nbsp; Sys.setenv(HADOOP_CMD="/usr/local/hadoop/bin/hadoop")</span><br />
+<span id="goog_505349517">&nbsp; &nbsp; &nbsp; &nbsp; Sys.setenv(HADOOP_HOME="/usr/local/hadoop")&nbsp;</span><br />
+<span id="goog_505349517">&nbsp; &nbsp; &nbsp; &nbsp; library("rhdfs", lib.loc="~/R/x86_64-pc-linux-gnu-library/3.2")</span><br />
+<br />
+<div class="separator" style="clear: both; text-align: center;">
+<a href="1.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="360" src="1.png" width="640" /></a></div>
+<br />
+<div class="separator" style="clear: both; text-align: center;">
+<a href="2.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="360" src="2.png" width="640" /></a></div>
+<br />
+<br />
+<span id="goog_505349517"></span><br />
+<span id="goog_505349517"></span><br />
+<span id="goog_505349517"></span><br />
+<span id="goog_505349517"></span><br />
+<span id="goog_505349517">3&nbsp; : then import the data by using the command</span><br />
+<span id="goog_505349517"><br /></span>
+<span id="goog_505349517">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; reder=hdfs.line.reader("/data/diabetes1")<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; diabetes = reder$read()<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; typeof(diabetes)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; diabetes</span><br />
+<br />
+<div class="separator" style="clear: both; text-align: center;">
+<a href="3.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="360" src="3.png" width="640" /></a></div>
+<br />
+<div class="separator" style="clear: both; text-align: center;">
+<a href="4.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="360" src="4.png" width="640" /></a></div>
+<br />
+<br />
+<span id="goog_505349517">4 : now implement the decesion tree by using rpart package</span><br />
+<span id="goog_505349517"><br /></span>
+<span id="goog_505349517">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; names(diabetes) &lt;- gsub("\\.","",names(diabetes))<br />&nbsp;&nbsp;&nbsp;&nbsp; str(diabetes)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; attributes(diabetes)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; library(rpart)<br /><br /><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; set.seed(564)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; flags = sample(2,nrow(diabetes), replace = TRUE, prob =c(0.7,0.3))<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; trainset = diabetes[which(flags==1),]<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; testset = diabetes[which(flags==2),]<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; str(trainset)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; str(testset)<br /><br /><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; index = sample(1:nrow(diabetes), nrow(diabetes)*0.7, replace=FALSE)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; trainset = diabetes[index,]<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; testset = diabetes[-index,]<br />&nbsp;&nbsp;&nbsp;&nbsp; str(trainset)<br />&nbsp;&nbsp;&nbsp;&nbsp; str(testset)<br /><br /><br />&nbsp;&nbsp;&nbsp; ?rpart<br />&nbsp;&nbsp;&nbsp; dtree = rpart(Classvariable ~ Number_of_times_pregnant<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; +Plasma_glucose_concentration<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; +Diastolic_blood_pressure<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; +Triceps_skin_fold_thickness<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; +Hour_serum_insulin<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; +Body_mass_index<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; +Diabetes_pedigree_function<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; +Ageyears ,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; data=trainset,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; control=rpart.control(minsplit = 10))<br />&nbsp;&nbsp;&nbsp; str(dtree)<br />&nbsp;&nbsp;&nbsp; dtree<br />&nbsp;&nbsp; plot(dtree)<br />&nbsp;&nbsp; text(dtree)</span><br />
+<br />
+<div class="separator" style="clear: both; text-align: center;">
+<a href="5.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="360" src="5.png" width="640" /></a></div>
+<br />
+<div class="separator" style="clear: both; text-align: center;">
+<a href="7.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="360" src="7.png" width="640" /></a></div>
+<br />
+<div class="separator" style="clear: both; text-align: center;">
+<a href="8.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="360" src="8.png" width="640" /></a></div>
+<br />
+<div class="separator" style="clear: both; text-align: center;">
+<a href="10.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="360" src="10.png" width="640" /></a></div>
+<br />
+<div class="separator" style="clear: both; text-align: center;">
+<a href="11.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="360" src="11.png" width="640" /></a></div>
+<br />
+<div class="separator" style="clear: both; text-align: center;">
+<a href="12.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="360" src="12.png" width="640" /></a></div>
+<br />
+<span id="goog_505349517"><br /></span>
+<span id="goog_505349517">5 : now the mining results is accessed by decesion maker</span><br />
+<span id="goog_505349517"><br /></span>
+<span id="goog_505349517"><br />&nbsp;</span><br />
+</div>
+

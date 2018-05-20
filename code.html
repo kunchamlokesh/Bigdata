@@ -1,0 +1,238 @@
+<html>
+<title>CODING</title>
+<body>
+
+<div dir="ltr" style="text-align: left;" trbidi="on">
+<br />
+<br />
+<div class="separator" style="clear: both; text-align: center;">
+<a href="code.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><br /></a></div>
+<div class="separator" style="clear: both; text-align: center;">
+<a href="code.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="106" src="code.png" width="400" /></a></div>
+<br />
+<br />
+<br />
+<table >
+<tr >
+<td>
+
+<h2 style="text-align: left;">
+<span style="color: #274e13;"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; HADOOP&nbsp; SETUP CODE</b></span></h2>
+<br />
+ <br />
+<b><span style="color: #660000;"><span style="background-color: white;">HDFS-SITE.XML</span></span></b><br />
+<br />
+<span style="color: #cc0000;">&lt;configuration&gt;</span><br />
+<span style="color: #cc0000;">&lt;property&gt;</span><br />
+<span style="color: #cc0000;">&nbsp; &lt;name&gt;dfs.replication&lt;/name&gt;</span><br />
+<span style="color: #cc0000;">&nbsp; &lt;value&gt;1&lt;/value&gt;</span><br />
+<span style="color: #cc0000;">&nbsp; &lt;description&gt;Default block replication.</span><br />
+<span style="color: #cc0000;">&nbsp; The actual number of replications can be specified when the file is created.</span><br />
+<span style="color: #cc0000;">&nbsp; The default is used if replication is not specified in create time.</span><br />
+<span style="color: #cc0000;">&nbsp; &lt;/description&gt;</span><br />
+<span style="color: #cc0000;">&nbsp;&lt;/property&gt;</span><br />
+<span style="color: #cc0000;">&nbsp;&lt;property&gt;</span><br />
+<span style="color: #cc0000;">&nbsp;&nbsp; &lt;name&gt;dfs.namenode.name.dir&lt;/name&gt;</span><br />
+<span style="color: #cc0000;">&nbsp;&nbsp; &lt;value&gt;file:/usr/local/hadoop_store/hdfs/namenode&lt;/value&gt;</span><br />
+<span style="color: #cc0000;">&nbsp;&lt;/property&gt;</span><br />
+<span style="color: #cc0000;">&nbsp;&lt;property&gt;</span><br />
+<span style="color: #cc0000;">&nbsp;&nbsp; &lt;name&gt;dfs.datanode.data.dir&lt;/name&gt;</span><br />
+<span style="color: #cc0000;">&nbsp;&nbsp; &lt;value&gt;file:/usr/local/hadoop_store/hdfs/datanode&lt;/value&gt;</span><br />
+<span style="color: #cc0000;">&nbsp;&lt;/property&gt;</span><br />
+<span style="color: #cc0000;">&lt;/configuration&gt;</span><br />
+<br />
+<br />
+<br />
+<u><b><span style="color: #073763;">CORE_SITE.XML</span></b></u><br />
+<br />
+<span style="color: #0b5394;">&lt;configuration&gt;</span><br />
+<span style="color: #0b5394;">&lt;property&gt;</span><br />
+<span style="color: #0b5394;">&nbsp; &lt;name&gt;hadoop.tmp.dir&lt;/name&gt;</span><br />
+<span style="color: #0b5394;">&nbsp; &lt;value&gt;/app/hadoop/tmp&lt;/value&gt;</span><br />
+<span style="color: #0b5394;">&nbsp; &lt;description&gt;A base for other temporary directories.&lt;/description&gt;</span><br />
+<span style="color: #0b5394;">&nbsp;&lt;/property&gt;</span><br />
+<span style="color: #0b5394;"><br /></span>
+<span style="color: #0b5394;">&nbsp;&lt;property&gt;</span><br />
+<span style="color: #0b5394;">&nbsp; &lt;name&gt;fs.default.name&lt;/name&gt;</span><br />
+<span style="color: #0b5394;">&nbsp; &lt;value&gt;hdfs://localhost:54310&lt;/value&gt;</span><br />
+<span style="color: #0b5394;">&nbsp; &lt;description&gt;The name of the default file system.&lt;/description&gt;</span><br />
+<span style="color: #0b5394;">&nbsp;&lt;/property&gt;</span><br />
+<span style="color: #0b5394;">&lt;/configuration&gt;</span><br />
+<u><br /></u>
+<u><b><span style="color: #b45f06;">MAPRED-SITE.XML</span></b></u><br />
+<span style="color: #b45f06;"><br /></span>
+<span style="color: #b45f06;">&lt;configuration&gt;</span><br />
+<span style="color: #b45f06;">&lt;property&gt;</span><br />
+<span style="color: #b45f06;">&nbsp; &lt;name&gt;mapred.job.tracker&lt;/name&gt;</span><br />
+<span style="color: #b45f06;">&nbsp; &lt;value&gt;localhost:54311&lt;/value&gt;</span><br />
+<span style="color: #b45f06;">&nbsp; &lt;description&gt;The host and port that the MapReduce job tracker runs</span><br />
+<span style="color: #b45f06;">&nbsp; at.&nbsp; </span><br />
+<span style="color: #b45f06;">&nbsp; &lt;/description&gt;</span><br />
+<span style="color: #b45f06;">&nbsp;&lt;/property&gt;</span><br />
+<span style="color: #b45f06;">&lt;/configuration&gt;</span><br />
+<br />
+<br />
+<br />
+<br />
+<u><br /></u>
+<u><b><span style="color: #134f5c;">IMPORTING DATA FROM HDFS</span></b></u><br />
+<br />
+<br />
+<span style="color: #38761d;">reder=hdfs.line.reader("/data/diabetes")</span><br />
+<span style="color: #38761d;">dibaetes = reder$read()</span><br />
+<span style="color: #38761d;">typeof(dibaetes)</span><br />
+<span style="color: #38761d;">diabetes</span><br />
+<b><br /></b>
+<h2 style="text-align: left;">
+<b><span style="color: #073763;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DECESION TREE&nbsp; USING R</span></b></h2>
+<br />
+<span style="color: #3d85c6;">names(diabetes) &lt;- gsub("\\.","",names(diabetes))</span><br />
+<span style="color: #3d85c6;">str(diabetes)</span><br />
+<span style="color: #3d85c6;">attributes(diabetes)</span><br />
+<span style="color: #3d85c6;">library(rpart)</span><br />
+<span style="color: #3d85c6;"><br /></span>
+<span style="color: #3d85c6;"><br /></span>
+<span style="color: #3d85c6;">set.seed(564)</span><br />
+<span style="color: #3d85c6;">flags = sample(2,nrow(diabetes), replace = TRUE, prob =c(0.7,0.3))</span><br />
+<span style="color: #3d85c6;">trainset = diabetes[which(flags==1),]</span><br />
+<span style="color: #3d85c6;">testset = diabetes[which(flags==2),]</span><br />
+<span style="color: #3d85c6;">str(trainset)</span><br />
+<span style="color: #3d85c6;">str(testset)</span><br />
+<span style="color: #3d85c6;"><br /></span>
+<span style="color: #3d85c6;"><br /></span>
+<span style="color: #3d85c6;">index = sample(1:nrow(diabetes), nrow(diabetes)*0.7, replace=FALSE)</span><br />
+<span style="color: #3d85c6;">trainset = diabetes[index,]</span><br />
+<span style="color: #3d85c6;">testset = diabetes[-index,]</span><br />
+<span style="color: #3d85c6;">str(trainset)</span><br />
+<span style="color: #3d85c6;">str(testset)</span><br />
+<span style="color: #3d85c6;"><br /></span>
+<span style="color: #3d85c6;"><br /></span>
+<span style="color: #3d85c6;">?rpart</span><br />
+<span style="color: #3d85c6;">dtree = rpart(Classvariable ~ Number_of_times_pregnant</span><br />
+<span style="color: #3d85c6;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; +Plasma_glucose_concentration</span><br />
+<span style="color: #3d85c6;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; +Diastolic_blood_pressure</span><br />
+<span style="color: #3d85c6;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; +Triceps_skin_fold_thickness</span><br />
+<span style="color: #3d85c6;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; +Hour_serum_insulin</span><br />
+<span style="color: #3d85c6;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; +Body_mass_index</span><br />
+<span style="color: #3d85c6;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; +Diabetes_pedigree_function</span><br />
+<span style="color: #3d85c6;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; +Ageyears ,</span><br />
+<span style="color: #3d85c6;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; data=trainset,</span><br />
+<span style="color: #3d85c6;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; control=rpart.control(minsplit = 10))</span><br />
+<span style="color: #3d85c6;">str(dtree)</span><br />
+<span style="color: #3d85c6;">dtree</span><br />
+<span style="color: #3d85c6;">plot(dtree)</span><br />
+<span style="color: #3d85c6;">text(dtree)</span><br />
+<span style="color: #3d85c6;">attributes(dtree)</span><br />
+<span style="color: #3d85c6;">dtree$variable.importance</span><br />
+<span style="color: #3d85c6;"><br /></span>
+<span style="color: #3d85c6;">name = read.csv("new.csv",header=1)</span><br />
+<span style="color: #3d85c6;">predict(dtree, New, type=c("class"))</span><br />
+<span style="color: #3d85c6;"><br /></span>
+<span style="color: #3d85c6;"><br /></span>
+<span style="color: #3d85c6;">predictedDT = predict(dtree, testset, type=c("class"))</span><br />
+<span style="color: #3d85c6;">predictedDT</span><br />
+<span style="color: #3d85c6;">table(predictedDT, testset$Classvariable)</span><br />
+<span style="color: #3d85c6;">mean(predictedDT!=testset$Classvariable)</span><br />
+<span style="color: #3d85c6;"><br /></span>
+<span style="color: #3d85c6;"><br /></span>
+<span style="color: #3d85c6;"><br /></span>
+<span style="color: #3d85c6;">name = read.csv("read.csv",header=1)</span><br />
+<span style="color: #3d85c6;">predict(dtree, name, type=c("class"))</span><br />
+<span style="color: #8e7cc3;"><b><br /></b></span>
+<h2 style="text-align: left;">
+<span style="color: #20124d;"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; TESTING</b></span></h2>
+<br />
+<span style="color: #674ea7;">package com.selenium.one;</span><br />
+<span style="color: #674ea7;"><br /></span>
+<span style="color: #674ea7;">import org.junit.Test;</span><br />
+<span style="color: #674ea7;">import org.openqa.selenium.By;</span><br />
+<span style="color: #674ea7;">import org.openqa.selenium.WebDriver;</span><br />
+<span style="color: #674ea7;">import org.openqa.selenium.firefox.FirefoxDriver;</span><br />
+<span style="color: #674ea7;"><br /></span>
+<span style="color: #674ea7;">import com.relevantcodes.extentreports.ExtentReports;</span><br />
+<span style="color: #674ea7;">import com.relevantcodes.extentreports.LogStatus;</span><br />
+<span style="color: #674ea7;"><br /></span>
+<span style="color: #674ea7;">public class Examples {</span><br />
+<span style="color: #674ea7;">&nbsp;&nbsp;&nbsp; </span><br />
+<span style="color: #674ea7;">&nbsp;&nbsp;&nbsp; </span><br />
+<span style="color: #674ea7;">&nbsp;&nbsp;&nbsp; @Test</span><br />
+<span style="color: #674ea7;">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; public void verifyTitle(){</span><br />
+<span style="color: #674ea7;">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; </span><br />
+<span style="color: #674ea7;">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; ExtentReports extent = ExtentReports.get(Examples.class);</span><br />
+<span style="color: #674ea7;">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; </span><br />
+<span style="color: #674ea7;">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; extent.init("/home/akhil/check.html",true);</span><br />
+<span style="color: #674ea7;">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; </span><br />
+<span style="color: #674ea7;">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; extent.startTest("verify page");</span><br />
+<span style="color: #674ea7;">&nbsp;&nbsp;&nbsp; /**</span><br />
+<span style="color: #674ea7;">&nbsp;&nbsp;&nbsp; &nbsp;* @param args</span><br />
+<span style="color: #674ea7;">&nbsp;&nbsp;&nbsp; &nbsp;*/</span><br />
+<span style="color: #674ea7;">&nbsp;&nbsp;&nbsp; </span><br />
+<span style="color: #674ea7;">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; // TODO Auto-generated method stub</span><br />
+<span style="color: #674ea7;">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; WebDriver driver =new FirefoxDriver();</span><br />
+<span style="color: #674ea7;">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; </span><br />
+<span style="color: #674ea7;">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; driver.get("http://localhost/registration/input.html");</span><br />
+<span style="color: #674ea7;">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; driver.manage().window().maximize();</span><br />
+<span style="color: #674ea7;">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; extent.log(LogStatus.INFO,"browser is running");</span><br />
+<span style="color: #674ea7;">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; </span><br />
+<span style="color: #674ea7;">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; driver.findElement(By.xpath("html/body/form/fieldset[1]/p/input")).sendKeys("lokesh@gmail.com");</span><br />
+<span style="color: #674ea7;">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; extent.log(LogStatus.INFO,"browser is running");</span><br />
+<span style="color: #674ea7;">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; driver.findElement(By.xpath("html/body/form/fieldset[2]/p[1]/input")).sendKeys("lokesh");</span><br />
+<span style="color: #674ea7;">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; extent.log(LogStatus.INFO,"browser is running");</span><br />
+<span style="color: #674ea7;">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; driver.findElement(By.xpath("html/body/form/fieldset[2]/p[2]/input")).sendKeys("kuncham");</span><br />
+<span style="color: #674ea7;">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; extent.log(LogStatus.INFO,"browser is running");</span><br />
+<span style="color: #674ea7;">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; driver.findElement(By.xpath("html/body/form/fieldset[2]/p[3]/input")).sendKeys("rvr");</span><br />
+<span style="color: #674ea7;">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; extent.log(LogStatus.INFO,"browser is running");</span><br />
+<span style="color: #674ea7;">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; driver.findElement(By.xpath("html/body/form/fieldset[2]/p[4]/input")).sendKeys("21");</span><br />
+<span style="color: #674ea7;">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; extent.log(LogStatus.INFO,"browser is running");</span><br />
+<span style="color: #674ea7;">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; driver.findElement(By.xpath("html/body/form/fieldset[2]/p[5]/input")).sendKeys("amarvathi");</span><br />
+<span style="color: #674ea7;">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; extent.log(LogStatus.INFO,"browser is running");</span><br />
+<span style="color: #674ea7;">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; driver.findElement(By.xpath("html/body/form/fieldset[2]/p[6]/input")).sendKeys("guntur");</span><br />
+<span style="color: #674ea7;">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; extent.log(LogStatus.INFO,"browser is running");</span><br />
+<span style="color: #674ea7;">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; driver.findElement(By.xpath("html/body/form/fieldset[2]/p[7]/input")).sendKeys("andhra pradesh");</span><br />
+<span style="color: #674ea7;">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; extent.log(LogStatus.INFO,"browser is running");</span><br />
+<span style="color: #674ea7;">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; driver.findElement(By.xpath("html/body/form/fieldset[2]/p[8]/input")).sendKeys("522007");</span><br />
+<span style="color: #674ea7;">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; extent.log(LogStatus.INFO,"browser is running");</span><br />
+<span style="color: #674ea7;">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; driver.findElement(By.xpath("html/body/form/fieldset[2]/p[9]/input")).sendKeys("87654");</span><br />
+<span style="color: #674ea7;">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; extent.log(LogStatus.INFO,"browser is running");</span><br />
+<span style="color: #674ea7;">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; driver.findElement(By.xpath("html/body/form/fieldset[2]/p[10]/input")).sendKeys("12345");</span><br />
+<span style="color: #674ea7;">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; extent.log(LogStatus.INFO,"browser is running");</span><br />
+<span style="color: #674ea7;">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; driver.findElement(By.xpath("html/body/form/fieldset[3]/p[1]/input")).sendKeys("22");</span><br />
+<span style="color: #674ea7;">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; extent.log(LogStatus.INFO,"browser is running");</span><br />
+<span style="color: #674ea7;">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; driver.findElement(By.xpath("html/body/form/fieldset[3]/p[2]/input")).sendKeys("24");</span><br />
+<span style="color: #674ea7;">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; extent.log(LogStatus.INFO,"browser is running");</span><br />
+<span style="color: #674ea7;">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; driver.findElement(By.xpath("html/body/form/fieldset[3]/p[3]/input")).sendKeys("54");</span><br />
+<span style="color: #674ea7;">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; extent.log(LogStatus.INFO,"browser is running");</span><br />
+<span style="color: #674ea7;">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; driver.findElement(By.xpath("html/body/form/fieldset[3]/p[4]/input")).sendKeys("44");</span><br />
+<span style="color: #674ea7;">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; extent.log(LogStatus.INFO,"browser is running");</span><br />
+<span style="color: #674ea7;">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; driver.findElement(By.xpath("html/body/form/fieldset[3]/p[5]/input")).sendKeys("66");</span><br />
+<span style="color: #674ea7;">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; extent.log(LogStatus.INFO,"browser is running");</span><br />
+<span style="color: #674ea7;">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; driver.findElement(By.xpath("html/body/form/fieldset[3]/p[6]/input")).sendKeys("89");</span><br />
+<span style="color: #674ea7;">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; extent.log(LogStatus.INFO,"browser is running");</span><br />
+<span style="color: #674ea7;">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; driver.findElement(By.xpath("html/body/form/fieldset[3]/p[7]/input")).sendKeys("56");</span><br />
+<span style="color: #674ea7;">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; extent.log(LogStatus.INFO,"browser is running");</span><br />
+<span style="color: #674ea7;">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; driver.findElement(By.xpath("html/body/form/fieldset[3]/input")).click();</span><br />
+<span style="color: #674ea7;">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; extent.log(LogStatus.PASS, "submitted sucessfully");</span><br />
+<span style="color: #674ea7;">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; driver.navigate().back();</span><br />
+<span style="color: #674ea7;">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; </span><br />
+<span style="color: #674ea7;">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; </span><br />
+<span style="color: #674ea7;">&nbsp;&nbsp;&nbsp; }</span><br />
+<span style="color: #674ea7;">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; </span><br />
+<span style="color: #674ea7;"><br /></span>
+<span style="color: #674ea7;">&nbsp;&nbsp;&nbsp; }</span><br />
+<span style="color: #674ea7;"><br /></span>
+<span style="color: #674ea7;"><br /></span>
+<span style="color: #674ea7;"><br /></span>
+<span style="color: #674ea7;"><br /></span>
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br /></div>
+</td>
+</tr>
+
+</table>
+</body>
+</html>
